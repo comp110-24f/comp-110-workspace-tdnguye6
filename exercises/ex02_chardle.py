@@ -42,23 +42,23 @@ def contains_char(word: str, letter: str) -> None:
     # For every instance of letter found in word, add 1 to match_count.
     if word[index] == letter:
         print(f"{letter} found at index {index}")
-        match_count = +1
+        match_count += 1
     index += 1
     if word[index] == letter:
         print(f"{letter} found at index {index}")
-        match_count = +1
+        match_count += 1
     index += 1
     if word[index] == letter:
         print(f"{letter} found at index {index}")
-        match_count = +1
+        match_count += 1
     index += 1
     if word[index] == letter:
         print(f"{letter} found at index {index}")
-        match_count = +1
+        match_count += 1
     index += 1
     if word[index] == letter:
         print(f"{letter} found at index {index}")
-        match_count = +1
+        match_count += 1
     # Print the number of instances of letter found in word depending on value of
     # match_count.
     if match_count == 0:
