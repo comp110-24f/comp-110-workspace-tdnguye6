@@ -11,6 +11,8 @@ def all(input: list[int], match_input: int) -> bool:
     match_update: bool
     # Iterate over entire vals list and return False if a non-matching element
     # is encountered. Else, return True if loop completes
+    if len(input) == 0:
+        return False
     for elem in input:
         if match_input == elem:
             match_update = True
@@ -35,53 +37,40 @@ def max(input: list[int]) -> int:
 
 
 def is_equal(input1: list[int], input2: list[int]) -> bool:
-    """Given two lists of integers, iterate over the shortest list and determine
-    deep equality between the elements at the same index
-    """
-    # Initialize a boolean variable that will be updated
-    # based on the deep equality of input1 and input2;
-    # return when finalized
-    equality_update: bool = True
-
-    def check_equality():
-        """Given two lists of equal len, iterate over both lists and determine if
-        all elements are equal at the same indices
-        """
-        for elem1 in input1:
-            for elem2 in input2:
-                if elem1 == elem2:
-                    equality_update = True
-                else:
-                    equality_update = False
-
-    # Assign an int variable to the difference in length between input1 and input2
-    # and use as comparison condition to handle lists of varied length
-    len_diff: int = len(input1) - len(input2)
-    # If input1 and input2 are of equal length, check for deep equality
-    if len_diff == 0:
-        check_equality()
-    # If input1 is shorter than input2, ignore elements in input2 that are in indices
-    # beyond input1's range
-    elif len_diff < 0:
-        while len(input1) < len(input2):
-            input2.pop(len(input2) - 1)
-        check_equality()
-    # If input1 is longer than input2, ignore elements in input1 that are in indices
-    # beyond input2's range
-    elif len_diff > 0:
-        while len(input2) < len(input1):
-            input1.pop(len(input1) - 1)
-        check_equality()
+    """Compare every element at every index of given list input1 to given list input2"""
+    # Return true if both lists are empty
+    if input1 == [] and input2 == []:
+        return True
+    # Return false if either list is empty
+    if input1 == [] or input2 == []:
+        return False
+    # Return false if the lists are of different lengths
+    if len(input1) > len(input2) or len(input1) < len(input2):
+        return False
+    # Initialize a variable to be updated to indicate deep equality of both lists
+    equality_update: bool
+    # Initialize an index variable as the condition of loop iterating over indices of
+    # the lists
+    index: int = 0
+    # Loop over every index of input1 and compare to elements of the same indices in
+    # input2, updating equality_update until all iterations of the loop complete
+    if len(input1) == len(input2):
+        while index < len(input1):
+            if input1[index] == input2[index]:
+                equality_update = True
+            else:
+                equality_update = False
+            index += 1
 
     return equality_update
 
 
 def extend(input1: list[int], input2: list[int]) -> None:
     """Append every element from input2 to input1"""
-    # Initialize an int variable as an index condition to append every element
-    # from input2 to input1
-    index: int = len(input2)
-    # Iterate over the entire input2 list, appending each element as indexed to input1
-    while 0 < index:
-        input1.append(input2[index - 1])
-        index -= 1
+
+    index: int = 0
+    # Iterate over and append every element in input2 to input1 from the starting element
+    # to the last element
+    while index < len(input2):
+        input1.append(input2[index])
+        index += 1
