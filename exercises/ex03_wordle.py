@@ -6,14 +6,9 @@ __author__: str = "730766559"
 def input_guess(secret_word_len: int) -> str:
     """Prompt user for a word of given length as a 'guess' for the secret word"""
     input_word: str = input(f"Enter a {secret_word_len} character word: ")
-    # Establish boolean variable as condition for while loop
-    valid_guess: bool = True
-    # Prompt user for guesses until a word of the correct length is guessed
-    while valid_guess == True:
-        if len(input_word) != secret_word_len:
-            input_word = input(f"That wasn't 5 chars! Try again: ")
-        else:
-            valid_guess = False
+    # Prompt user for guesses until the length of guess is equal to secret's length
+    while len(input_word) != secret_word_len:
+        input_word = input(f"That wasn't {secret_word_len} chars! Try again: ")
     return input_word
 
 
@@ -32,8 +27,7 @@ def contains_char(secret_word: str, searched_char: str) -> bool:
         else:
             search_index += 1
     # Only runs if searched_char never matches with secret_word
-    if search_index == len(secret_word):
-        return False
+    return False
 
 
 WHITE_BOX: str = "\U00002B1C"
@@ -81,19 +75,18 @@ def emojified(user_guess: str, secret_word: str) -> str:
 def main(secret: str) -> None:
     """The entrypoint of the program and main game loop."""
     current_turn: int = 1
-    max_turns: int = len(secret)
+    # Initialize a variable user_guess to relate and pass to emojified function
     user_guess: str
-    while current_turn <= max_turns:
-        print(f"=== Turn {current_turn}/{max_turns} ===")
+    # Allot 6 turns to user, exiting the game once the correct word is guessed
+    while current_turn <= 6:
+        print(f"=== Turn {current_turn}/6 ===")
         user_guess = input_guess(len(secret))
         print(emojified(user_guess, secret))
         if user_guess == secret:
-            print(f"You won in {current_turn}/{max_turns}!")
+            print(f"You won in {current_turn}/6!")
             return
         current_turn += 1
-    if current_turn == max_turns:
-        print(f"X/{max_turns} - Sorry, try again tomorrow!")
-    return
+    print(f"X/6 - Sorry, try again tomorrow!")
 
 
 if __name__ == "__main__":
