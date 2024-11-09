@@ -1,4 +1,4 @@
-"""Creating river ecosystem using bear, fish, and river classes"""
+"""Creating river ecosystem using bear, fish, and river classes."""
 
 from exercises.ex07.river import River
 

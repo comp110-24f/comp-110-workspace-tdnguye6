@@ -10,7 +10,8 @@ __author__: str = "730766559"
 class River:
     """River class to simulate a river ecosystem with the days passed in the
     ecosystem, the collection of fish, and the collection of bears in the river
-    ecosystem."""
+    ecosystem.
+    """
 
     day: int
     fish: list[Fish]
@@ -31,7 +32,8 @@ class River:
     def check_ages(self):
         """Check the age of the entire fish and bear population via fish and bear
         attributes of River class and update the population by simulation
-        deaths of fish over the age of 3 and bears over the age of 5."""
+        deaths of fish over the age of 3 and bears over the age of 5.
+        """
 
         updated_fish: list[Fish] = []
         updated_bears: list[Bear] = []
@@ -51,7 +53,8 @@ class River:
         """When called, simulate the food chain by having every Bear object in
         River 'eat' 3 fish while the fish population is greater than or equal to
         5. Do this by calling eat() method from Bear class and remove_fish()
-        method from River class."""
+        method from River class.
+        """
 
         for bear in self.bears:
             if len(self.fish) >= 5:
@@ -60,7 +63,8 @@ class River:
 
     def check_hunger(self):
         """When called, simulate the 'death' of all bears whose hunger_score
-        is less than 0 and update the River object's bear population in accordance."""
+        is less than 0 and update the River object's bear population in accordance.
+        """
 
         updated_bears: list[Bear] = []
 
@@ -73,7 +77,8 @@ class River:
     def repopulate_fish(self):
         """When called, simulate the reproduction of fish by increasing
         the population of fish by 4 for every 2 fish in the concurrent
-        population."""
+        population.
+        """
 
         fish_count: int = len(self.fish)
         offspring_count: int = (fish_count // 2) * 4
@@ -83,7 +88,8 @@ class River:
     def repopulate_bears(self):
         """When called, simulate the reproduction of fish by increasing
         the population of bears by 1 for every 2 bears in the concurrent
-        population."""
+        population.
+        """
 
         bear_count: int = len(self.bears)
         offspring_count: int = bear_count // 2
@@ -93,7 +99,8 @@ class River:
 
     def view_river(self) -> None:
         """When called, print the attributes of the River object upon which
-        this method is called."""
+        this method is called.
+        """
 
         print(f"~~~ Day {str(self.day)}: ~~~ ")
         print(f"Fish population: {str(len(self.fish))} ")
@@ -125,7 +132,8 @@ class River:
 
     def one_river_week(self) -> None:
         """Call one_river_day() method 7 times to simulate a week of the
-        river simulation."""
+        river simulation.
+        """
 
         idx: int = 0
         while idx < 7:
@@ -136,7 +144,8 @@ class River:
         """When called, after having passed the argument for the number
         of fish to be removed from self.fish, remove that same number of fish
         from the population, starting from the frontmost indices of the
-        self.fish list."""
+        self.fish list.
+        """
 
         for idx in range(0, amount):
             self.fish.pop(0)
