@@ -1,9 +1,6 @@
+from river import River
+
 """Creating river ecosystem using bear, fish, and river classes"""
-
-from exercises.ex07.fish import Fish
-from exercises.ex07.bear import Bear
-from exercises.ex07.river import River
-
 
 __author__: str = "730766559"
 
