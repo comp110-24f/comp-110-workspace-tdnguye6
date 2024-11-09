@@ -3,13 +3,14 @@
 from ex07.fish import Fish
 from ex07.bear import Bear
 
+
 class River:
-    
+
     day: int
     fish: list[Fish]
     bears: list[Bear]
-    
-    def __init__(self, num_fish: int, num_bears:int):
+
+    def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
         self.day: int = 0
         self.fish: list[Fish] = []
@@ -21,23 +22,46 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
-        return None
+        updated_fish: list[Fish] = []
+        updated_bears: list[Bear] = []
+
+        for elem1 in range(0, len(self.fish)):
+            if self.fish[elem1].age <= 3:
+                updated_fish.append(self.fish[elem1])
+
+        for elem2 in range(0, len(self.bears)):
+            if self.bears[elem2].age <= 5:
+                updated_bears.append(self.bears[elem2])
+
+        self.fish = updated_fish
+        self.bears = updated_bears
 
     def bears_eating(self):
-        return None
-    
+        for bear in self.bears:
+            if len(self.fish) >= 5:
+                bear.eat(num_fish=3)
+                self.remove_fish(amount=3)
+
     def check_hunger(self):
-        return None
-        
+        updated_bears: list[Bear] = []
+
+        for bear in self.bears:
+            if not bear.hunger_score < 0:
+                updated_bears.append(bear)
+
+        self.bears = updated_bears
+
     def repopulate_fish(self):
         return None
-    
+
     def repopulate_bears(self):
         return None
-    
-    def view_river(self):
-        return None
-            
+
+    def view_river(self) -> None:
+        print(f"~~~ Day {str(self.day)}: ~~~ ")
+        print(f"Fish population: {str(len(self.fish))} ")
+        print(f"Bear population: {str(len(self.bears))} ")
+
     def one_river_day(self):
         """Simulate one day of life in the river"""
         # Increase day by 1
@@ -60,4 +84,13 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            
+
+    def one_river_week(self) -> None:
+        idx: int = 0
+        while idx < 7:
+            self.one_river_day()
+            idx += 1
+
+    def remove_fish(self, amount: int) -> None:
+        for idx in range(0, amount):
+            self.fish.pop(0)
