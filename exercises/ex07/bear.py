@@ -15,6 +15,7 @@ class Bear:
         """Initialize new Bear objects with an age int value of 0 and
         a hunger_score int value of 0.
         """
+
         self.age = 0
         self.hunger_score = 0
 
@@ -22,6 +23,7 @@ class Bear:
         """Simulate the aging of bears and their caloric decrement
         by adding 1 to age and subtracting 1 from the hunger_score.
         """
+
         self.age += 1
         self.hunger_score -= 1
 
@@ -29,4 +31,5 @@ class Bear:
         """Simulate the consumption of fish by bears by increasing the
         hunger_score by the same number as there were fish.
         """
+
         self.hunger_score += num_fish

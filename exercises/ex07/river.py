@@ -1,7 +1,8 @@
+"""File to define River class."""
+
 from exercises.ex07.fish import Fish
 from exercises.ex07.bear import Bear
 
-"""File to define River class."""
 
 __author__: str = "730766559"
 
@@ -18,6 +19,7 @@ class River:
 
     def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears."""
+
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -32,6 +34,7 @@ class River:
         attributes of River class and update the population by simulation
         deaths of fish over the age of 3 and bears over the age of 5.
         """
+
         updated_fish: list[Fish] = []
         updated_bears: list[Bear] = []
 
@@ -52,6 +55,7 @@ class River:
         5. Do this by calling eat() method from Bear class and remove_fish()
         method from River class.
         """
+
         for bear in self.bears:
             if len(self.fish) >= 5:
                 bear.eat(num_fish=3)
@@ -61,6 +65,7 @@ class River:
         """When called, simulate the 'death' of all bears whose hunger_score
         is less than 0 and update the River object's bear population in accordance.
         """
+
         updated_bears: list[Bear] = []
 
         for bear in self.bears:
@@ -74,6 +79,7 @@ class River:
         the population of fish by 4 for every 2 fish in the concurrent
         population.
         """
+
         fish_count: int = len(self.fish)
         offspring_count: int = (fish_count // 2) * 4
         for offspring in range(0, offspring_count):
@@ -84,6 +90,7 @@ class River:
         the population of bears by 1 for every 2 bears in the concurrent
         population.
         """
+
         bear_count: int = len(self.bears)
         offspring_count: int = bear_count // 2
 
@@ -94,12 +101,14 @@ class River:
         """When called, print the attributes of the River object upon which
         this method is called.
         """
+
         print(f"~~~ Day {str(self.day)}: ~~~ ")
         print(f"Fish population: {str(len(self.fish))} ")
         print(f"Bear population: {str(len(self.bears))} ")
 
     def one_river_day(self):
         """Simulate one day of life in the river."""
+
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -125,6 +134,7 @@ class River:
         """Call one_river_day() method 7 times to simulate a week of the
         river simulation.
         """
+
         idx: int = 0
         while idx < 7:
             self.one_river_day()
@@ -136,5 +146,6 @@ class River:
         from the population, starting from the frontmost indices of the
         self.fish list.
         """
+
         for idx in range(0, amount):
             self.fish.pop(0)
