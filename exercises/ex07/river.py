@@ -1,5 +1,5 @@
-from fish import Fish
-from bear import Bear
+from exercises.ex07.fish import Fish
+from exercises.ex07.bear import Bear
 
 """File to define River class."""
 
@@ -8,7 +8,7 @@ __author__: str = "730766559"
 
 class River:
     """River class to simulate a river ecosystem with the days passed in the
-    ecosystem, the collection of fish, and the collection of bears in the
+    ecosystem, the collection of fish, and the collection of bears in the river
     ecosystem.
     """
 
