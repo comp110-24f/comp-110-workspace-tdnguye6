@@ -8,9 +8,12 @@ __author__: str = "730766559"
 
 
 class River:
-    """River class to simulate a river ecosystem with the days passed in the
-    ecosystem, the collection of fish, and the collection of bears in the river
-    ecosystem.
+    """River class to simulate a river ecosystem.
+
+    The days passed in the river ecosystem, the collection
+    of fish, and the collection of bears in the river
+    ecosystem are given int, list[Fish], and list[Bear]
+    attributes.
     """
 
     day: int
@@ -29,9 +32,10 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
-        """Check the age of the entire fish and bear population via fish and bear
-        attributes of River class and update the population by simulation
-        deaths of fish over the age of 3 and bears over the age of 5.
+        """Update the entire fish and bear population by checking their ages.
+
+        Simulate the deaths of the fish and bear population by checking the
+        age attributes of the fish and bears.
         """
         updated_fish: list[Fish] = []
         updated_bears: list[Bear] = []
@@ -48,10 +52,12 @@ class River:
         self.bears = updated_bears
 
     def bears_eating(self):
-        """When called, simulate the food chain by having every Bear object in
-        River 'eat' 3 fish while the fish population is greater than or equal to
-        5. Do this by calling eat() method from Bear class and remove_fish()
-        method from River class.
+        """Simulate the food chain between the bears and fish.
+
+        Every bear will 'eat' 3 fish while the fish population
+        is greater than or equal to 5. Do this by calling eat()
+        method from Bear class and remove_fish() method
+        from River class.
         """
         for bear in self.bears:
             if len(self.fish) >= 5:
@@ -59,8 +65,11 @@ class River:
                 self.remove_fish(amount=3)
 
     def check_hunger(self):
-        """When called, simulate the 'death' of all bears whose hunger_score
-        is less than 0 and update the River object's bear population in accordance.
+        """When called, simulate the starvation of bears.
+
+        Check the hunger_score attribute of every bear and if it
+        is less than 0, update the River object's bear population
+        accordingly.
         """
         updated_bears: list[Bear] = []
 
@@ -71,8 +80,9 @@ class River:
         self.bears = updated_bears
 
     def repopulate_fish(self):
-        """When called, simulate the reproduction of fish by increasing
-        the population of fish by 4 for every 2 fish in the concurrent
+        """Simulate the reproduction of fish.
+
+        Increase the population of fish by 4 for every 2 fish in the concurrent
         population.
         """
         fish_count: int = len(self.fish)
@@ -81,8 +91,9 @@ class River:
             self.fish.append(Fish())
 
     def repopulate_bears(self):
-        """When called, simulate the reproduction of fish by increasing
-        the population of bears by 1 for every 2 bears in the concurrent
+        """Simulate the reproduction of fish.
+
+        Increase the population of bears by 1 for every 2 bears in the concurrent
         population.
         """
         bear_count: int = len(self.bears)
@@ -92,9 +103,7 @@ class River:
             self.bears.append(Bear())
 
     def view_river(self) -> None:
-        """When called, print the attributes of the River object upon which
-        this method is called.
-        """
+        """Print the attributes of the River object upon which this method is called."""
         print(f"~~~ Day {str(self.day)}: ~~~ ")
         print(f"Fish population: {str(len(self.fish))} ")
         print(f"Bear population: {str(len(self.bears))} ")
@@ -123,19 +132,16 @@ class River:
         self.view_river()
 
     def one_river_week(self) -> None:
-        """Call one_river_day() method 7 times to simulate a week of the
-        river simulation.
-        """
+        """Call one_river_day() method 7 times to simulate a week."""
         idx: int = 0
         while idx < 7:
             self.one_river_day()
             idx += 1
 
     def remove_fish(self, amount: int) -> None:
-        """When called, after having passed the argument for the number
-        of fish to be removed from self.fish, remove that same number of fish
-        from the population, starting from the frontmost indices of the
-        self.fish list.
+        """When called, remove a given number of fish from the population.
+
+        Start from the frontmost indices of the self.fish list.
         """
         for idx in range(0, amount):
             self.fish.pop(0)

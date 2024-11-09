@@ -10,10 +10,8 @@ class Fish:
 
     def __init__(self):
         """Initialize the age of new Fish objects to the int value of 0."""
-
         self.age = 0
 
     def one_day(self) -> None:
         """Simulate the aging of fish by adding 1 to the age attribute."""
-
         self.age += 1
