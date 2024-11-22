@@ -1,38 +1,22 @@
 """Python Playground"""
 
-from __future__ import annotations
 
+def all_good(scores: list[dict[str, str]], thresh: int, idx: int) -> bool:
+    is_good: bool = int(scores[idx]["score"]) >= thresh
+    is_last: bool = idx + 1 == len(scores)
 
-class Node:
-    value: int
-    next: Node | None
-
-    def __init__(self, val: int, next: Node | None):
-        self.value = val
-        self.next = next
-
-
-two: Node = Node(2, None)
-one: Node = Node(1, two)
-
-
-def sum(head: Node | None) -> int:
-    if head is None:
-        return 0
+    if is_last:
+        return is_good
+    elif not is_good:
+        return is_good
     else:
-        rest: int = sum(head.next)
-        return head.value + rest
+        return all_good(scores, thresh, idx + 1)
 
 
-print(sum(one))
+pack: list[dict[str, str]] = [
+    {"name": "Nelli", "score": "8"},
+    {"name": "Ada", "score": "8"},
+    {"name": "Pip", "score": "10"},
+]
 
-
-def to_str(head: Node | None) -> str:
-    if head is None:
-        return "None"
-    else:
-        rest: str = to_str(head.next)
-        return f"{head.value} -> {rest}"
-
-
-print(to_str(one))
+print(all_good(scores=pack, thresh=8, idx=0))
